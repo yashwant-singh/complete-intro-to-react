@@ -14,13 +14,13 @@ var MyTitle = React.createClass({
 
 })
 
-var MyFirstComponent = (
-		div(null,
-			React.createElement(MyTitle,null),
-			React.createElement(MyTitle,null),
-			React.createElement(MyTitle,null)
-		)
+var MyFirstComponent = React.createClass({
+	render: function() {
+		return (
+			div(null,
+				React.createElement(MyTitle)
+			))
+	}
+})
 
-	)
-
-ReactDom.render(MyFirstComponent,document.getElementById(''));
+ReactDom.render(React.createElement(MyFirstComponent),document.getElementById('app'));
