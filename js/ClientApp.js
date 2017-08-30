@@ -12,14 +12,16 @@ var MyTitle = React.createClass({
 	}
 })
 
+var MyTitleFact = React.createFactory(MyTitle)
+
 var MyFirstComponent = React.createClass({
 	render: function() {
 		return(
 			
 			div(null,
-					React.createElement(MyTitle),
-					React.createElement(MyTitle),
-					React.createElement(MyTitle)
+					MyTitleFact(MyTitle),
+					MyTitleFact(MyTitle),
+					MyTitleFact(MyTitle)
 				)
 			
 			)
