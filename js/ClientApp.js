@@ -1,8 +1,7 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import MyTitle from "./MyTitle"
+import React from 'react'
+import ReactDOM from 'react-dom'
+import MyTitle from './MyTitle'
 var div = React.DOM.div
-var h1 = React.DOM.h1
 
 
 var MyTitleFact = React.createFactory(MyTitle)
