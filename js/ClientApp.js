@@ -1,4 +1,5 @@
-/* global React ReactDOM */
+import React from "react"
+import ReactDOM from "react-dom"
 var div = React.DOM.div
 var h1 = React.DOM.h1
 
