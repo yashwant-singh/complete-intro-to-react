@@ -19,6 +19,13 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      },
+      {
+        enforce: 'pre',
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
@@ -27,6 +34,18 @@ module.exports = {
             presets: ['env']
           }
         }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              url: false
+            }
+          }
+        ]
 
       }
     ]

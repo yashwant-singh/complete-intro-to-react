@@ -1,20 +1,20 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import MyTitle from './MyTitle'
+import {render} from 'react-dom'
+import '../public/normalize.css'
+import '../public/style.css'
 
-var MyTitleFact = React.createFactory(MyTitle)
-
-var MyFirstComponent = React.createClass({
-  render: function () {
+const App = React.createClass({
+  render () {
     return (
-       <div
-                <MyTitle title= 'Props are great' color= 'rebeccapurple'/>
-                <MyTitle title= 'Use props ever where' color= 'mediumaquamarine'/>,
-                <MyTitle title= 'Props are the best' colorr= 'peru'/>
+      <div className='app'>
+        <div className='landing'>
+          <h1>Video Service</h1>
+          <input type='text' placeholder='search' />
+          <a> or Browse All</a>
         </div>
-
-        )
+      </div>
+            )
   }
-
 })
-ReactDOM.render(React.createElement(MyFirstComponent), document.getElementById('app'))
+
+render(<App />, document.getElementById('app'))
