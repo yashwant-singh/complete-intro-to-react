@@ -21,12 +21,6 @@ module.exports = {
       {
         enforce: 'pre',
         test: /\.js$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
-      },
-      {
-        enforce: 'pre',
-        test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
