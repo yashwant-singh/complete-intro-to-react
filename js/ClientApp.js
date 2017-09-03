@@ -1,5 +1,5 @@
 import React from 'react'
-import {render} from 'react-dom'
+import { render } from 'react-dom'
 import '../public/normalize.css'
 import '../public/style.css'
 
@@ -8,12 +8,12 @@ const App = React.createClass({
     return (
       <div className='app'>
         <div className='landing'>
-          <h1>Video Service</h1>
-          <input type='text' placeholder='search' />
-          <a> or Browse All</a>
+          <h1>svideo</h1>
+          <input type='text' placeholder='Search' />
+          <a>or Browse All</a>
         </div>
       </div>
-            )
+    )
   }
 })
 
