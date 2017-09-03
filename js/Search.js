@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 const Search = React.createClass({
   render () {
     return (
-      <h1>Search page!!</h1>
+      <Link to='/search' className='browse-all'> or Browse All </Link>
     )
   }
 })
