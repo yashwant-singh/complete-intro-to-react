@@ -1,10 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router'
+// import { Link } from 'react-router'
+import preload from '../public/data.json'
 
 const Search = React.createClass({
   render () {
+     console.log(preload.shows[0]);
     return (
-      <Link to='/search' className='browse-all'> or Browse All </Link>
+      <div className='search'>
+        <pre><code>{JSON.stringify(preload, null, 4)}</code></pre>
+      </div>
     )
   }
 })

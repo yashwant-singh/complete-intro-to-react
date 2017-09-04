@@ -14,7 +14,7 @@ const App = React.createClass({
         <div className='app'>
           <Match exactly pattern='/' component={Landing} />
           <Match pattern='/search' component={Search} />
-          <Match pattern='/empinfo' component={EmpInfo}/>
+          <Match pattern='/empinfo' component={EmpInfo} />
         </div>
       </HashRouter>
     )
