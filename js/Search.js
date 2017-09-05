@@ -6,7 +6,7 @@ import ShowCard from './ShowCard'
 const Search = React.createClass({
   getInitialState () {
     return {
-      searchTerm: 'this is the default searchTerm'
+      searchTerm: ''
     }
   },
   handleSearchTermXhange (event) {
