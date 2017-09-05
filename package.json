@@ -10,7 +10,9 @@
     "build": "webpack",
     "dev": "webpack-dev-server",
     "watch": "npm run build -- --watch",
-	"test": "jest"
+	  "test": "NODE_ENV=test jest",
+    "update-test": "npm run test -- -u",
+    "cover": "npm test -- --coverage"
   },
   "dependencies": {
     "axios": "^0.15.3",
