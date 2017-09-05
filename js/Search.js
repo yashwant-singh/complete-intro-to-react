@@ -1,36 +1,37 @@
 import React from 'react'
-// import { Link } from 'react-router'
-import preload from '../public/data.json'
 import ShowCard from './ShowCard'
+const { arrayOf, shape, string } = React.PropTypes
 
 const Search = React.createClass({
+  propTypes: {
+    shows: arrayOf(shape({
+      title: string,
+      description: string
+    }))
+  },
   getInitialState () {
     return {
       searchTerm: ''
     }
   },
-  handleSearchTermXhange (event) {
+  handleSearchTermChange (event) {
     this.setState({searchTerm: event.target.value})
   },
   render () {
-    console.log(preload.shows)
     return (
       <div className='search'>
-        <header>
-          <h1>{this.state.searchTerm}</h1>
-          <input type='text' placeholder='Search' value={this.state.searchTerm} onChange={this.handleSearchTermXhange} />
-        </header>
+        
         <div>
-          {preload.shows.filter((show) => `${show.title} ${show.description}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0)
-          .map((show) => {
-            return (
-              <ShowCard {...show} />
-            )
-          })
-        }
+          {this.props.shows
+            .filter((show) => `${show.title} ${show.description}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0)
+            .map((show) => {
+              return (
+                <ShowCard key={show.imdbID} {...show} />
+              )
+            })}
         </div>
       </div>
-      )
+    )
   }
 })
 
