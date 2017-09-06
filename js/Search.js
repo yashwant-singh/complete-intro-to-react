@@ -16,11 +16,12 @@ const Search = React.createClass({
     
     return (
       <div className='search'>
-        // <header>
-        //   <h1>{this.state.searchTerm}</h1>
-        //   <input type='text' placeholder='Search' value={this.state.searchTerm} onChange={this.handleSearchTermXhange} />
-        // </header>
-        <Header />
+        <Header
+          showSearch
+          searchTerm={this.state.searchTerm}
+          handleSearchTermChange={this.handleSearchTermXhange}
+        />
+
         <div>
           {this.props.shows.filter((show) => `${show.title} ${show.description}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0)
           .map((show) => {

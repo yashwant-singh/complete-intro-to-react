@@ -29,7 +29,7 @@ const App = React.createClass({
           <Match pattern='/details/:id' component={ (props) => {
             const show = preload.shows.filter((show) => 
               props.params.id === show.imdbID)
-                return <Details show={show} {...props} />
+                return <Details show={show[0]} {...props} />
           }}/>
         </div>
       </HashRouter>
