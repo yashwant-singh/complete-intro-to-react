@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const {shape, string} = React.PropTypes
 const Details = React.createClass({
-   propTypes: {
+  propTypes: {
     show: shape({
       title: string,
       year: string,
@@ -15,23 +15,22 @@ const Details = React.createClass({
   },
 
   getInitialState () {
-    return { 
+    return {
       omdbData: {}
     }
   },
   componentDidMount () {
     axios.get(`http://www.omdbapi.com/?i=${this.props.show.imdbID}`)
-    .then((response)=>{
+    .then((response) => {
       console.log('response :', response)
-      this.setState({omdbData : response.data})
-    }).catch((error)=> {
-      console.error('axios error ',error)
+      this.setState({omdbData: response.data})
+    }).catch((error) => {
+      console.error('axios error ', error)
     })
   },
-  
- 
+
   render () {
-     const { title, description, year, poster, trailer } = this.props.show
+    const { title, description, year, poster, trailer } = this.props.show
 
     let rating
     if (this.state.omdbData.imdbRating) {
@@ -42,7 +41,7 @@ const Details = React.createClass({
 
     return (
       <div className='details'>
-         <Header />
+        <Header />
         <section>
           <h1>{title}</h1>
           <h2>({year})</h2>
@@ -51,8 +50,8 @@ const Details = React.createClass({
           <p>{description}</p>
         </section>
         <div>
-          <iframe src={`https://www.youtube-nocookie.com/embed/${trailer}?rel=0&amp;controls=0&amp;showinfo=0`} frameBorder='0' 
-          allowFullScreen />
+          <iframe src={`https://www.youtube-nocookie.com/embed/${trailer}?rel=0&amp;controls=0&amp;showinfo=0`} frameBorder='0'
+            allowFullScreen />
         </div>
       </div>
     )

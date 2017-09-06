@@ -16,21 +16,21 @@ const App = React.createClass({
       title: string,
       description: string
     }))
-  }, 
+  },
   render () {
     return (
       <HashRouter>
         <div className='app'>
           <Match exactly pattern='/' component={Landing} />
-          <Match pattern='/search' component={(props)=>{return <Search shows={preload.shows} {...props} />}
-        } 
+          <Match pattern='/search' component={(props) => { return <Search shows={preload.shows} {...props} /> }
+        }
         />
           <Match pattern='/empinfo' component={EmpInfo} />
-          <Match pattern='/details/:id' component={ (props) => {
-            const show = preload.shows.filter((show) => 
+          <Match pattern='/details/:id' component={(props) => {
+            const show = preload.shows.filter((show) =>
               props.params.id === show.imdbID)
-                return <Details show={show[0]} {...props} />
-          }}/>
+            return <Details show={show[0]} {...props} />
+          }} />
         </div>
       </HashRouter>
     )

@@ -1,41 +1,38 @@
 import React from 'react'
-import {Link} from 'react-router'
-const Header = React.createClass({
+import { Link } from 'react-router'
+
+class Header extends React.Component {
   render () {
-
     let utilSpace
-
     if (this.props.showSearch) {
-        utilSpace = (<input type='text' placeholder='Search' value={this.props.searchTerm} onChange={this.props.handleSearchTermChange} />)
+      utilSpace = <input onChange={this.props.handleSearchTermChange} value={this.props.searchTerm} type='text' placeholder='Search' />
     } else {
-      utilSpace=(
-        
+      utilSpace = (
         <h2>
           <Link to='/search'>
             Back
           </Link>
         </h2>
-
       )
-  }
+    }
     return (
-        <header>
-          <h1>
-            <Link to='/'>
-              Service Video
-            </Link>
-          </h1>
-          {utilSpace}
-        </header>
-      )
+      <header>
+        <h1>
+          <Link to='/'>
+            svideo
+          </Link>
+        </h1>
+        {utilSpace}
+      </header>
+    )
   }
-})
+}
 
 const { func, bool, string } = React.PropTypes
-
-Header.propType = {
+Header.propTypes = {
   handleSearchTermChange: func,
   showSearch: bool,
   searchTerm: string
 }
+
 export default Header
