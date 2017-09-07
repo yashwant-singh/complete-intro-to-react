@@ -1,1 +1,2 @@
 export const SET_SEARCH_TERM = 'SET_SEARCH_TERM'
+export const STORE_OMDB_DATA = 'STORE_OMDB_DATA'
