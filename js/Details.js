@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
-import { getOMDBDetails } from './actionCreators'
+import axios from 'axios'
 import Header from './Header'
 
 const {shape, string, func} = React.PropTypes
@@ -21,17 +20,22 @@ const Details = React.createClass({
   },
 
   componentDidMount () {
-    if (!this.props.omdbData.imdbRating) {
-      this.props.dispatch(getOMDBDetails(this.props.show.imdbID))
-    }
+    // axios.get(`https://api.themoviedb.org/3/find/${this.props.show.imdbID}?api_key=db971c94a628dcda7871231a08fdede6&language=en-US&external_source=imdb_id`)
+    axios.get(`https://api.themoviedb.org/3/find/${this.props.show.imdbID}?api_key=db971c94a628dcda7871231a08fdede6&language=en-US&external_source=imdb_id`)
+    .then((response) => {
+      // Dispatch is required in async call
+      this.setState({omdbData: response.data.tv_results[0]})
+    }).catch((error) => {
+      console.error('axios error ', error)
+    })
   },
 
   render () {
     const { title, description, year, poster, trailer } = this.props.show
-
     let rating
-    if (this.props.omdbData.imdbRating) {
-      rating = <h3>{this.props.omdbData.imdbRating}</h3>
+
+    if (this.state.omdbData.vote_average) {
+      rating = <h3>{this.state.omdbData.vote_average}</h3>
     } else {
       rating = <img src='/public/img/loading.png' alt='loading indicator' />
     }
@@ -55,17 +59,11 @@ const Details = React.createClass({
   }
 })
 
-// Stateless function component
-
-// const Details= (props) =>{
-//     return <h1>{props.params.id}</h1>
-// }
-
 const mapStateToProps = (state, ownProps) => {
   const omdbData = state.omdbData[ownProps.show.imdbID] ? state.omdbData[ownProps.show.imdbID] : {}
-
   return {
     omdbData
   }
 }
+
 export default connect(mapStateToProps)(Details)
