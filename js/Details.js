@@ -20,22 +20,20 @@ const Details = React.createClass({
     }
   },
   componentDidMount () {
-    axios.get(`http://www.omdbapi.com/?i=${this.props.show.imdbID}`)
-    .then((response)=>{
-      console.log('response :', response)
-      this.setState({omdbData : response.data})
-    }).catch((error)=> {
-      console.error('axios error ',error)
+    console.log('component did mount');
+    // axios.get(`https://api.themoviedb.org/3/find/${this.props.show.imdbID}?api_key=db971c94a628dcda7871231a08fdede6&language=en-US&external_source=imdb_id`)
+    axios.get(`https://api.themoviedb.org/3/find/${this.props.show.imdbID}?api_key=db971c94a628dcda7871231a08fdede6&language=en-US&external_source=imdb_id`)
+    .then((response) => {
+      this.setState({ omdbData: response.data.tv_results[0]})
+    }).catch(( error ) => {
+      console.error('axios error ', error)
     })
   },
-  
- 
   render () {
      const { title, description, year, poster, trailer } = this.props.show
-
     let rating
-    if (this.state.omdbData.imdbRating) {
-      rating = <h3>{this.state.omdbData.imdbRating}</h3>
+    if (this.state.omdbData.vote_average) {
+      rating = <h3>{this.state.omdbData.vote_average}</h3>
     } else {
       rating = <img src='/public/img/loading.png' alt='loading indicator' />
     }
