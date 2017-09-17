@@ -20,15 +20,15 @@ const Details = React.createClass({
     dispatch: func
   },
   componentDidMount () {
-    if (!this.props.omdbData.imdbRating) {
+    if (!this.props.omdbData.vote_average) {
       this.props.dispatch(getOMDBDetails(this.props.show.imdbID))
     }
   },
   render () {
     const { title, description, year, poster, trailer } = this.props.show
     let rating
-    if (this.props.omdbData.imdbRating) {
-      rating = <h3>{this.props.omdbData.imdbRating}</h3>
+    if (this.props.omdbData.vote_average) {
+      rating = <h3>{this.props.omdbData.vote_average}</h3>
     } else {
       rating = <img src='/public/img/loading.png' alt='loading indicator' />
     }
