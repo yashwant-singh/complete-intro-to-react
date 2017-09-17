@@ -12,11 +12,8 @@ const setSearchTerm = (state, action) => {
 }
 
 const addOMDBData = (state, action) => {
-  // { type: ADD_OMDB_DATA, omdbData: {...}, imdbID: 'tt12345'}
-  // { 'tt12345': {...} }
   const newOMDBData = {}
   Object.assign(newOMDBData, state.omdbData, {[action.imdbID]: action.omdbData})
-  // squire bracket means key here what ever comming from action.imdbID
   const newState = {}
   Object.assign(newState, state, {omdbData: newOMDBData})
   return newState
@@ -27,7 +24,8 @@ const rootReducer = (state = DEFAULT_STATE, action) => {
     case SET_SEARCH_TERM:
       return setSearchTerm(state, action)
     case ADD_OMDB_DATA:
-      return setSearchTerm(state, action)
+      console.log('action ', action, 'type :', state)
+      return addOMDBData(state, action)
     default:
       return state
   }

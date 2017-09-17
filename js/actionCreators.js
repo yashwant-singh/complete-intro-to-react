@@ -11,10 +11,9 @@ export function addOMDBData (imdbID, omdbData) {
 
 export function getOMDBDetails (imdbID) {
   return function (dispatch, getState) {
-    axios.get(`http://www.omdbapi.com/?i=${imdbID}`)
+    axios.get(`https://api.themoviedb.org/3/find/${imdbID}?api_key=db971c94a628dcda7871231a08fdede6&language=en-US&external_source=imdb_id`)
       .then((response) => {
-        dispatch(addOMDBData(imdbID, response.data))
-      })
-      .catch((error) => console.error('axios error', error))
+        dispatch(addOMDBData(imdbID, response.data.tv_results[0]))
+      }).catch((error) => console.error('axios error', error))
   }
 }
