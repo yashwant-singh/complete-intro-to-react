@@ -1,15 +1,28 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router'
+const { string } = React.PropTypes
 
 const Landing = React.createClass({
+  propTypes: {
+    searchTerm: string
+  },
   render () {
+    console.log('hi')
     return (
       <div className='landing'>
         <h1>svideo</h1>
-        <input type='text' placeholder='Search' />
-        <a>or Browse All</a>
+        <input value={this.props.searchTerm} type='text' placeholder='Search' />
+        <Link to='/search'>or Browse All</Link>
       </div>
     )
   }
 })
 
-export default Landing
+const mapStateToProps = state => {
+  return {
+    searchTerm: state.searchTerm
+  }
+}
+export default connect(mapStateToProps)(Landing)
+
